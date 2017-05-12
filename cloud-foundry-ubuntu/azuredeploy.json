@@ -1,0 +1,148 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vmName": {
+      "type": "string",
+      "metadata": {
+        "description": "name of the vm, will be used as DNS Name for the Public IP used to access the Virtual Machine"
+      }
+    },
+    "adminUsername": {
+      "type": "string",
+      "metadata": {
+        "description": "User name for the Virtual Machine"
+      }
+    },
+    "sshKeyData": {
+      "type": "string",
+      "metadata": {
+        "description": "Please copy the content of your SSH RSA public key and paste it here. You can use \"ssh-keygen -t rsa -b 2048\" to generate your SSH key pairs."
+      }
+    },
+    "environment": {
+      "type": "string",
+      "allowedValues": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureStack"
+      ],
+      "metadata": {
+        "description": "Different environments in Azure. Choose AzureCloud for Global Azure, and choose AzureChinaCloud for Mooncake (Azure China Cloud)."
+      }
+    },
+    "tenantID": {
+      "type": "string",
+      "minLength": 36,
+      "maxLength": 36,
+      "metadata": {
+        "description": "ID of the tenant. See https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/blob/master/docs/guidance.md"
+      }
+    },
+    "clientID": {
+      "type": "string",
+      "minLength": 36,
+      "maxLength": 36,
+      "metadata": {
+        "description": "ID of the client. See https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/blob/master/docs/guidance.md"
+      }
+    },
+    "clientSecret": {
+      "type": "securestring",
+      "metadata": {
+        "description": "secret of the client. See https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/blob/master/docs/guidance.md"
+      }
+    },
+    "autoDeployBosh": {
+      "type": "string",
+      "defaultValue": "enabled",
+      "allowedValues": [
+        "enabled",
+        "disabled"
+      ],
+      "metadata": {
+        "description": "The flag allowing to deploy Bosh automatically or not"
+      }
+    },
+    "azureStackResource": {
+      "type": "string",
+      "metadata": {
+        "description": "Resource of the Azure Stack deployment. Use Azure Powershell command: (Invoke-RestMethod -Uri https://api.azurestack.local/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]"
+      }
+    },
+    "serviceHostBase": {
+      "type": "string"
+    },
+    "azureStackDNSRecursor": {
+      "type":"string"
+    },
+    "idnsAddress": {
+      "type": "string",
+      "defaultValue": "168.63.129.16"
+    }
+  },
+  "variables" : {
+
+    "assetLocation": "https://raw.githubusercontent.com/asnarayan/AzureStack-QuickStart-Templates/master/",
+
+    "cloudfoundryLocation" : "[concat(variables('assetLocation'),'cloud-foundry-ubuntu/')]",
+    "boshLocation": "[concat(variables('assetLocation'),'bosh-setup/')]",
+
+    "setupScriptsRootLocation": "[concat(variables('assetLocation'),'cloud-foundry-ubuntu/parts/')]",
+
+    "boshSetupScriptName" : "setup_bosh.sh",
+    "cloudfoundrySetupScriptName" : "setup_cloudfoundry.sh",
+    "BoshSetupTemplateURL": "[concat(variables('boshLocation'),'/azuredeploy.json')]",
+    "PrepareBoshVM" : "bosh-vm"
+  },
+  "resources": [
+      {
+        "name": "[variables('PrepareBoshVM')]",
+        "type": "Microsoft.Resources/deployments",
+        "apiVersion": "2015-01-01",
+        "dependsOn": [],
+        "properties": {
+            "mode": "Incremental",
+            "templateLink": {
+                "uri": "[variables('BoshSetupTemplateURL')]",
+                "contentVersion": "1.0.0.0"
+            },
+            "parameters": {
+                "vmName": {
+                    "value": "[parameters('vmName')]"
+                },
+                "adminUsername": {
+                    "value": "[parameters('adminUsername')]"
+                },
+                "sshKeyData": {
+                    "value": "[parameters('sshKeyData')]"
+                },
+                "environment": {
+                    "value": "[parameters('environment')]"
+                },
+                "tenantID": {
+                    "value": "[parameters('tenantID')]"
+                },
+                "clientID": {
+                    "value": "[parameters('clientID')]"
+                },
+                "clientSecret": {
+                    "value": "[parameters('clientSecret')]"
+                },
+                "autoDeployBosh": {
+                    "value": "[parameters('autoDeployBosh')]"
+                },
+                "azureStackResource": {
+                    "value": "[parameters('azureStackResource')]"
+                },
+                "serviceHostBase": {
+                    "value": "[parameters('serviceHostBase')]"
+                },
+                "azureStackDNSRecursor": {
+                    "value": "[parameters('azureStackDNSRecursor')]"
+                }
+            }
+        }
+      }
+    ]
+  }
