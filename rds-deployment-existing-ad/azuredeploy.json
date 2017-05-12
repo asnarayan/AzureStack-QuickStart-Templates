@@ -41,12 +41,13 @@
       "type": "string",
       "allowedValues": [
         "2012-R2-Datacenter",
+        "2016-Datacenter"
         "Windows-Server-Technical-Preview"
       ],
       "metadata": {
         "description": "Windows server SKU"
       },
-      "defaultValue": "2012-R2-Datacenter"
+      "defaultValue": "2016-Datacenter"
     },
     "NumberOfRemoteDesktopSessionHosts": {
       "type": "int",

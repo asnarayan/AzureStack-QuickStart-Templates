@@ -29,7 +29,7 @@
 	  "metadata": {
 		"description": "The SKU Name of Windows Image"
 	  },
-	  "defaultValue": "2012-R2-Datacenter"
+	  "defaultValue": "2016-Datacenter"
 	},
 
 	"windowsImageVersion": {
@@ -58,7 +58,7 @@
 	  "metadata": {
 		"description": "The type of the Storage Account created"
 	  },
-		"defaultValue": "Standard_LRS" 
+		"defaultValue": "Standard_LRS"
 	},
 
 	"adminUsername": {
@@ -117,7 +117,7 @@
 	  },
 	  "defaultValue": 10
 	},
-	
+
 	"currentIndex": {
 	  "type": "int",
 	  "metadata": {
@@ -126,10 +126,10 @@
 	}
   },
   "variables": {
-	
+
 	"TANicName": "TA-Nic-",
 	"vmContainerName": "vhds"
-	
+
   },
   "resources": [
 	{

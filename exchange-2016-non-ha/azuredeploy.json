@@ -31,7 +31,7 @@
         "uniqueStorageAccountName": "[tolower(concat('sa', resourceGroup().name))]",
         "uniqueStorageAccountContainerName": "[tolower(concat('sc', resourceGroup().name))]",
         "location": "[resourceGroup().location]",
-        "vmOsSku": "2012-R2-Datacenter",
+        "vmOsSku": "2016-Datacenter",
         "vmAdminUsername": "vmadministrator",
         "vmAdminPassword": "[subscription().subscriptionId]",
         "vmName": "[concat('vm', resourceGroup().name)]",

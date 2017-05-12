@@ -114,7 +114,7 @@
         },
         "windowsJumpboxSku": {
             "type": "string",
-            "defaultValue": "2012-R2-Datacenter",
+            "defaultValue": "2016-Datacenter",
             "metadata": {
                 "description": "This is the windows sku used by the windows jumpbox"
             }
