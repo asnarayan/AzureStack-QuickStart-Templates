@@ -98,7 +98,7 @@
     "OSDiskName": "[concat('osdisk-', parameters('vmName'))]",
 	"assetLocation": "https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/mysql-standalone-server-windows/",
     "cseBlobNameScript": "MySql.Setup.CustomScriptExtension.ps1",
-	
+
 	"mySqlInstallationZipPath": {
 		"5.7": "https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.17-winx64.zip",
 		"5.6": "https://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.35-winx64.zip",
@@ -110,7 +110,7 @@
     {
       "type": "Microsoft.Storage/storageAccounts",
       "name": "[variables('vhdStorageName')]",
-      "apiVersion": "2015-05-01-preview",
+      "apiVersion": "2016-01-01",
       "location": "[resourceGroup().location]",
       "tags": {
         "displayName": "StorageAccount"
@@ -122,7 +122,7 @@
     {
       "type": "Microsoft.Network/publicIPAddresses",
       "name": "[variables('publicIPAddressName')]",
-      "apiVersion": "2015-05-01-preview",
+      "apiVersion": "2015-06-15",
       "location": "[resourceGroup().location]",
       "tags": {
         "displayName": "PublicIPAddress"
@@ -137,7 +137,7 @@
     {
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[variables('subnetSecurityGroupName')]",
-      "apiVersion": "2015-05-01-preview",
+      "apiVersion": "2015-06-15",
       "location": "[resourceGroup().location]",
       "properties": {
         "securityRules": [
@@ -160,7 +160,7 @@
     {
       "type": "Microsoft.Network/virtualNetworks",
       "name": "[variables('virtualNetworkName')]",
-      "apiVersion": "2015-05-01-preview",
+      "apiVersion": "2015-06-15",
       "location": "[resourceGroup().location]",
       "tags": {
         "displayName": "VirtualNetwork"
@@ -190,7 +190,7 @@
     {
       "type": "Microsoft.Network/networkInterfaces",
       "name": "[variables('nicName')]",
-      "apiVersion": "2015-05-01-preview",
+      "apiVersion": "2015-06-15",
       "location": "[resourceGroup().location]",
       "tags": {
         "displayName": "NetworkInterface"
@@ -219,7 +219,7 @@
     {
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[parameters('vmName')]",
-      "apiVersion": "2015-06-15",
+      "apiVersion": "2016-03-30",
       "location": "[resourceGroup().location]",
       "tags": {
         "displayName": "VirtualMachine"
@@ -268,7 +268,7 @@
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "name": "[concat(parameters('vmName'), '/', 'PowerShellExec')]",
-      "apiVersion": "2015-06-15",
+      "apiVersion": "2016-03-30",
       "location": "[resourceGroup().location]",
       "dependsOn": [
         "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"

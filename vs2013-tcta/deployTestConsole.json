@@ -62,7 +62,7 @@
 		{
 			"type": "Microsoft.Compute/virtualMachines/extensions",
 			"name": "[concat(parameters('testConsoleVMName'),'/ConfigureConsoleVM')]",
-			"apiVersion": "2015-06-15",
+			"apiVersion": "2016-03-30",
 			"dependsOn": [
 			],
 			"location": "[resourceGroup().location]",
@@ -87,7 +87,7 @@
                         "sqlInstallationISOUri": "[parameters('sqlInstallationISOUri')]",
                         "vsInstallationISOUri": "[parameters('vsInstallationISOUri')]",
                         "vsaInstallationISOUri": "[parameters('vsaInstallationISOUri')]",
-						"VSProductKey": "[parameters('VisualStudioProductKey')]" 
+						"VSProductKey": "[parameters('VisualStudioProductKey')]"
 					}
 				},
 				"protectedSettings": {

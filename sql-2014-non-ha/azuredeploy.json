@@ -34,7 +34,7 @@
             "type": "securestring",
             "metadata": {
                 "description": "The password for the Administrator account of the new VMs and Domain"
-            },            
+            },
             "defaultValue": "[concat('Subscription#',subscription().subscriptionId)]"
         }
     },
@@ -102,7 +102,7 @@
             "name": "[variables('nsgName')]",
             "type": "Microsoft.Network/networkSecurityGroups",
             "location": "[variables('location')]",
-            "apiVersion": "2015-05-01-preview",
+            "apiVersion": "2015-06-15",
             "properties": {
                 "securityRules": [
                     {
@@ -125,7 +125,7 @@
             "name": "[variables('virtualNetworkName')]",
             "type": "Microsoft.Network/virtualNetworks",
             "location": "[variables('location')]",
-            "apiVersion": "2015-05-01-preview",
+            "apiVersion": "2015-06-15",
             "dependsOn": [
                 "[variables('nsgID')]"
             ],
@@ -152,7 +152,7 @@
             "name": "[variables('publicIPAddressName')]",
             "type": "Microsoft.Network/publicIPAddresses",
             "location": "[variables('location')]",
-            "apiVersion": "2015-05-01-preview",
+            "apiVersion": "2015-06-15",
             "dependsOn": [
                 "[variables('vnetID')]"
             ],
@@ -166,7 +166,7 @@
         {
             "name": "[variables('publiclbName')]",
             "type": "Microsoft.Network/loadBalancers",
-            "apiVersion": "2015-05-01-preview",
+            "apiVersion": "2015-06-15",
             "location": "[variables('location')]",
             "dependsOn": [
                 "[variables('publicIPAddressID')]"
@@ -343,7 +343,7 @@
                     },
                     "dnsServerAddress": {
                         "value": [
-                            "[variables('primaryIpADAddress')]"                            
+                            "[variables('primaryIpADAddress')]"
                         ]
                     }
                 }

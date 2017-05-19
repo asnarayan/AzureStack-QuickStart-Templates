@@ -27,7 +27,7 @@
             "type": "securestring",
             "metadata": {
                 "description": "The password for the Administrator account of the new VMs and Domain"
-            },            
+            },
             "defaultValue": "[concat('Subscription#',subscription().subscriptionId)]"
         },
         "sqlInstallationISOUri": {
@@ -146,7 +146,7 @@
     },
     "resources": [
         {
-            "apiVersion": "2015-05-01-preview",
+            "apiVersion": "2015-06-15",
             "type": "Microsoft.Network/networkSecurityGroups",
             "name": "[variables('nsgName')]",
             "location": "[variables('location')]",
@@ -172,7 +172,7 @@
             "name": "[variables('virtualNetworkName')]",
             "type": "Microsoft.Network/virtualNetworks",
             "location": "[variables('location')]",
-            "apiVersion": "2015-05-01-preview",
+            "apiVersion": "2015-06-15",
             "dependsOn": [
                 "[variables('nsgID')]"
             ],
@@ -196,7 +196,7 @@
             }
         },
         {
-            "apiVersion": "2015-05-01-preview",
+            "apiVersion": "2015-06-15",
             "type": "Microsoft.Network/publicIPAddresses",
             "name": "[variables('publicIPAddressName')]",
             "location": "[variables('location')]",
@@ -208,7 +208,7 @@
             }
         },
         {
-            "apiVersion": "2015-05-01-preview",
+            "apiVersion": "2015-06-15",
             "type": "Microsoft.Network/publicIPAddresses",
             "name": "[variables('spPublicIPAddressName')]",
             "location": "[variables('location')]",
@@ -220,7 +220,7 @@
             }
         },
         {
-            "apiVersion": "2015-05-01-preview",
+            "apiVersion": "2015-06-15",
             "name": "[variables('publiclbName')]",
             "type": "Microsoft.Network/loadBalancers",
             "location": "[variables('location')]",
@@ -255,7 +255,7 @@
             }
         },
         {
-            "apiVersion": "2015-05-01-preview",
+            "apiVersion": "2015-06-15",
             "name": "[variables('sppubliclbName')]",
             "type": "Microsoft.Network/loadBalancers",
             "location": "[variables('location')]",
@@ -592,7 +592,7 @@
                 }
             }
         },
-        
+
         {
             "name": "[variables('deploySPStandalone')]",
             "type": "Microsoft.Resources/deployments",

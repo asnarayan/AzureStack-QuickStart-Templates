@@ -58,7 +58,7 @@
 			"metadata": {
 				"description": "The type of the Storage Account created"
 			},
-			"defaultValue": "Standard_LRS" 
+			"defaultValue": "Standard_LRS"
 		},
 
 		"adminUsername": {
@@ -144,7 +144,7 @@
 		{
 			"type": "Microsoft.Storage/storageAccounts",
 			"name": "[concat(parameters('storageAccount'), '0')]",
-			"apiVersion": "2015-05-01-preview",
+			"apiVersion": "2016-01-01",
 			"location": "[resourceGroup().location]",
 			"properties": {
 				"accountType": "[parameters('storageAccountType')]"
@@ -154,7 +154,7 @@
 			"name": "[concat(variables('consoleNicName'), '0')]",
 			"type": "Microsoft.Network/networkInterfaces",
 			"location": "[resourceGroup().location]",
-			"apiVersion": "2015-05-01-preview",
+			"apiVersion": "2015-06-15",
 			"dependsOn": [
 			],
 			"properties": {
@@ -182,7 +182,7 @@
 			}
 		},
 		{
-			"apiVersion": "2015-06-15",
+			"apiVersion": "2016-03-30",
 			"type": "Microsoft.Compute/virtualMachines",
 			"name": "[concat(parameters('vmNamePrefix'), '0')]",
 			"location": "[resourceGroup().location]",

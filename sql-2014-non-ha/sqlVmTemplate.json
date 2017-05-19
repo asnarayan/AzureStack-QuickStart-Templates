@@ -98,7 +98,7 @@
             "name": "[parameters('storageAccount')]",
             "type": "Microsoft.Storage/storageAccounts",
             "location": "[variables('location')]",
-            "apiVersion": "2015-06-15",
+            "apiVersion": "2016-01-01",
             "properties": {
                 "accountType": "[parameters('storageAccountType')]"
             }
@@ -107,7 +107,7 @@
             "name": "[parameters('sqlNicName')]",
             "type": "Microsoft.Network/networkInterfaces",
             "location": "[variables('location')]",
-            "apiVersion": "2015-05-01-preview",
+            "apiVersion": "2015-06-15",
             "properties": {
                 "ipConfigurations": [
                     {
@@ -126,7 +126,7 @@
             "name": "[parameters('vmName')]",
             "type": "Microsoft.Compute/virtualMachines",
             "location": "[variables('location')]",
-            "apiVersion": "2015-06-15",
+            "apiVersion": "2016-03-30",
             "dependsOn": [
                 "[resourceId('Microsoft.Storage/storageAccounts',parameters('storageAccount'))]",
                 "[resourceId('Microsoft.Network/networkInterfaces',parameters('sqlNicName'))]"

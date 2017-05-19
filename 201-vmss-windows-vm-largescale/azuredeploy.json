@@ -96,7 +96,7 @@
       "type": "Microsoft.Storage/storageAccounts",
       "name": "[concat(variables('storageAccountSuffix'), copyIndex())]",
       "location": "[variables('location')]",
-      "apiVersion": "2015-06-15",
+      "apiVersion": "2016-01-01",
       "copy": {
         "name": "storageLoop",
         "count": "[variables('saCount')]"

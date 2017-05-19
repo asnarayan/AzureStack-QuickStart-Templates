@@ -57,7 +57,7 @@
         {
             "type": "Microsoft.Network/networkSecurityGroups",
             "name": "[variables('nsgName')]",
-            "apiVersion": "2015-05-01-preview",
+            "apiVersion": "2015-06-15",
             "location": "[resourceGroup().location]",
             "properties": {
                 "securityRules": [
@@ -80,7 +80,7 @@
         {
             "type": "Microsoft.Network/virtualNetworks",
             "name": "[variables('virtualNetworkName')]",
-            "apiVersion": "2015-05-01-preview",
+            "apiVersion": "2015-06-15",
             "location": "[resourceGroup().location]",
             "properties": {
                 "addressSpace": {
@@ -107,7 +107,7 @@
         {
             "type": "Microsoft.Network/publicIPAddresses",
             "name": "[variables('publicIPAddressName')]",
-            "apiVersion": "2015-05-01-preview",
+            "apiVersion": "2015-06-15",
             "location": "[resourceGroup().location]",
             "properties": {
                 "publicIPAllocationMethod": "Dynamic",
@@ -122,7 +122,7 @@
         {
             "type": "Microsoft.Network/loadBalancers",
             "name": "[variables('publiclbName')]",
-            "apiVersion": "2015-05-01-preview",
+            "apiVersion": "2015-06-15",
             "location": "[resourceGroup().location]",
             "properties": {
                 "frontendIPConfigurations": [
@@ -157,7 +157,7 @@
         {
             "type": "Microsoft.Storage/storageAccounts",
             "name": "[variables('storageName')]",
-            "apiVersion": "2015-05-01-preview",
+            "apiVersion": "2016-01-01",
             "location": "[resourceGroup().location]",
             "properties": {
                 "accountType": "[variables('storageAccountType')]"
@@ -169,7 +169,7 @@
         {
             "type": "Microsoft.Network/networkInterfaces",
             "name": "[concat(variables('NICPrefix'), '0')]",
-            "apiVersion": "2015-05-01-preview",
+            "apiVersion": "2015-06-15",
             "location": "[resourceGroup().location]",
             "properties": {
                 "ipConfigurations": [
@@ -197,7 +197,7 @@
         {
             "type": "Microsoft.Network/networkInterfaces",
             "name": "[concat(variables('NICPrefix'), '1')]",
-            "apiVersion": "2015-05-01-preview",
+            "apiVersion": "2015-06-15",
             "location": "[resourceGroup().location]",
             "properties": {
                 "ipConfigurations": [
@@ -220,7 +220,7 @@
         {
             "type": "Microsoft.Compute/virtualMachines",
             "name": "[concat(variables('vmName'), '0')]",
-            "apiVersion": "2015-06-15",
+            "apiVersion": "2016-03-30",
             "location": "[resourceGroup().location]",
             "properties": {
                 "hardwareProfile": {
@@ -294,7 +294,7 @@
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "name": "[concat(variables('vmName'), '0','/DSCExtension-EnableWindowsFeature')]",
-            "apiVersion": "2015-06-15",
+            "apiVersion": "2016-03-30",
             "location": "[resourceGroup().location]",
             "properties": {
                 "publisher": "Microsoft.Powershell",
@@ -316,7 +316,7 @@
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "name": "[concat(variables('vmName'), '0','/BGInfoExtension')]",
-            "apiVersion": "2015-06-15",
+            "apiVersion": "2016-03-30",
             "location": "[resourceGroup().location]",
             "properties": {
                 "publisher": "Microsoft.Compute",
@@ -334,7 +334,7 @@
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "name": "[concat(variables('vmName'), '0','/CustomScriptExtension-VerifyWindowsFeature')]",
-            "apiVersion": "2015-06-15",
+            "apiVersion": "2016-03-30",
             "location": "[resourceGroup().location]",
             "properties": {
                 "publisher": "Microsoft.Compute",

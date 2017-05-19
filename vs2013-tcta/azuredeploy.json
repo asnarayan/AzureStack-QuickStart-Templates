@@ -46,7 +46,7 @@
             "type": "securestring",
             "metadata": {
                 "description": "The password for the Administrator account of the new VMs and Domain"
-            },            
+            },
             "defaultValue": "[concat('Subscription#',subscription().subscriptionId)]"
         },
 
@@ -62,7 +62,7 @@
             "type": "securestring",
             "metadata": {
                 "description": "The password of the user account under which the test controller and test agent services will run"
-            },            
+            },
             "defaultValue": "[concat('SA',subscription().subscriptionId)]"
         },
 
@@ -121,7 +121,7 @@
     "resources": [
 
         {
-            "apiVersion": "2015-05-01-preview",
+            "apiVersion": "2015-06-15",
             "type": "Microsoft.Network/publicIPAddresses",
             "name": "[variables('publicIPAddressName')]",
             "location": "[resourceGroup().location]",
@@ -131,7 +131,7 @@
         },
 
         {
-            "apiVersion": "2015-05-01-preview",
+            "apiVersion": "2015-06-15",
             "name": "[variables('publiclbName')]",
             "type": "Microsoft.Network/loadBalancers",
             "location": "[resourceGroup().location]",

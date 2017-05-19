@@ -2,7 +2,7 @@
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "vmSku": { 
+        "vmSku": {
             "defaultValue": "Standard_A1",
             "type": "String",
             "metadata": {
@@ -87,7 +87,7 @@
         {
             "type": "Microsoft.Storage/storageAccounts",
             "name": "[variables('storageAccountName')]",
-            "apiVersion": "2015-06-15",
+            "apiVersion": "2016-01-01",
             "location": "[variables('location')]",
             "properties": {
                 "accountType": "[variables('storageAccountType')]"
@@ -108,7 +108,7 @@
                     {
                         "name": "[variables('subnetName')]",
                         "properties": {
-                            "addressPrefix": "10.0.0.0/24"     
+                            "addressPrefix": "10.0.0.0/24"
                         }
                     }
                 ]

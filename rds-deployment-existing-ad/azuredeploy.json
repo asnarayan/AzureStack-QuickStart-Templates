@@ -111,7 +111,7 @@
             }
         },
         {
-            "apiVersion": "2015-06-15",
+            "apiVersion": "2016-01-01",
             "type": "Microsoft.Storage/storageAccounts",
             "name": "[variables('storageAccountName')]",
             "location": "[resourceGroup().location]",
@@ -120,19 +120,19 @@
             }
         },
         {
-          "apiVersion": "2015-06-15",
+          "apiVersion": "2016-03-30",
           "type": "Microsoft.Compute/availabilitySets",
           "name": "gw-availabilityset",
           "location": "[resourceGroup().location]"
         },
         {
-          "apiVersion": "2015-06-15",
+          "apiVersion": "2016-03-30",
           "type": "Microsoft.Compute/availabilitySets",
           "name": "cb-availabilityset",
           "location": "[resourceGroup().location]"
         },
         {
-          "apiVersion": "2015-06-15",
+          "apiVersion": "2016-03-30",
           "type": "Microsoft.Compute/availabilitySets",
           "name": "rdsh-availabilityset",
           "location": "[resourceGroup().location]"
@@ -296,7 +296,7 @@
             }
         },
          {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "2016-03-30",
       "type": "Microsoft.Compute/virtualMachines",
       "name": "gw-vm",
       "location": "[resourceGroup().location]",
@@ -343,7 +343,7 @@
       },
       "resources": [
         {
-          "apiVersion": "2015-06-15",
+          "apiVersion": "2016-03-30",
           "type": "Microsoft.Compute/virtualMachines/extensions",
           "name": "gw-vm/gateway",
           "location": "[resourceGroup().location]",
@@ -376,7 +376,7 @@
       ]
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "2016-03-30",
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[concat('rdsh-', copyindex())]",
       "location": "[resourceGroup().location]",
@@ -428,7 +428,7 @@
       },
       "resources": [
         {
-          "apiVersion": "2015-06-15",
+          "apiVersion": "2016-03-30",
           "type": "Microsoft.Compute/virtualMachines/extensions",
           "name": "[concat('rdsh-', copyindex(),'/sessionhost')]",
           "location": "[resourceGroup().location]",
@@ -461,7 +461,7 @@
       ]
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "2016-03-30",
       "type": "Microsoft.Compute/virtualMachines",
       "name": "cb-vm",
       "location": "[resourceGroup().location]",
@@ -511,7 +511,7 @@
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "name": "cb-vm/rdsdeployment",
-      "apiVersion": "2015-06-15",
+      "apiVersion": "2016-03-30",
       "location": "[resourceGroup().location]",
       "dependsOn": [
         "[resourceId('Microsoft.Compute/virtualMachines', 'cb-vm')]",

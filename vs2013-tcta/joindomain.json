@@ -49,7 +49,7 @@
     },
     "resources": [
         {
-            "apiVersion": "2015-06-15",
+            "apiVersion": "2016-03-30",
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "name": "[concat(parameters('vmName'),'/', variables('vmExtensionName'))]",
             "location": "[resourceGroup().location]",
@@ -67,8 +67,8 @@
                     "Restart": "true",
                     "Options": "[parameters('domainJoinOptions')]"
                 },
-                "protectedsettings": { 
-                    "Password": "[parameters('domainPassword')]"    
+                "protectedsettings": {
+                    "Password": "[parameters('domainPassword')]"
                 }
             }
         }
