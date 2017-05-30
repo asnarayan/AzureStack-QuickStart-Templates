@@ -155,72 +155,12 @@ sed -r -i "s|default_password=\"c1oudc0w\"|default_password=\"c1oudc0w\" \npassw
 sed -r -i "s|while true; do|while false; do|" $home_dir/deploy_cloudfoundry.sh
 
 
-function retry_deploy()
-{
-  retry=0
-  max_retries=10
-  interval=30
-  while [ ${retry} -lt ${max_retries} ]; do
-    echo "Operation: $1, Retry #${retry}"
-    su -c $1 - $username
-    if [ $? -eq 0 ]; then
-      echo "Successful Deployment: $1"
-      break
-    else
-      let retry=retry+1
-      sleep $interval
-    fi
-  done
-}
-
-# echo "Started Bosh Deployment"
-# deploy_command="./deploy_bosh.sh"
-# retry_deploy $deploy_command
-# echo "Finished Bosh Deployment"
-#
-#
-#
-# echo "Started CloudFoundry Deployment"
-# cf_install_manifest=$(get_setting CF_INSTALL_MANIFEST)
-# deploy_command="./deploy_cloudfoundry.sh example_manifests/$cf_install_manifest"
-# retry_deploy $deploy_command
-# echo "Finished CloudFoundry Deployment"
-#
-#
-
-
-
-
-
-
- echo "Starting Bosh Deployment"
+echo "Starting Bosh Deployment"
 su -c "./deploy_bosh.sh" - $username
-# #deploy_command=$"su -c \"./deploy_bosh.sh\" -$username"
-# #deploy_command="$home_dir/deploy_bosh.sh"
-# #retryop $deploy_command
 echo "Finished Bosh Deployment"
-#
-#
 
-# Issue where CF wont deploy on shells without stdin.
 echo "Starting Cloud Foundry Deployment"
 cf_install_manifest=$(get_setting CF_INSTALL_MANIFEST)
-
-# su $username
-# #command="su -c \"./deploy_cloudfoundry.sh example_manifests/$cf_install_manifest >> install.log 2>&1; exit\" - $username"
-# command="(./deploy_cloudfoundry.sh example_manifests/single-vm-cf.yml >> install.log 2>&1)&"
-# bash -c "$command"
-# wait
-# exit
-
-
-#command="su -c \"./deploy_cloudfoundry.sh example_manifests/$cf_install_manifest >> install.log 2>&1; exit\" - $username"
-
-#su -c "(./deploy_cloudfoundry.sh example_manifests/single-vm-cf.yml)"  $username
-#./deploy_cloudfoundry.sh example_manifests/single-vm-cf.yml
-
-
-
 su -c "./deploy_cloudfoundry.sh example_manifests/$cf_install_manifest" - $username
 echo "Finished Cloud Foundry Deployment"
 

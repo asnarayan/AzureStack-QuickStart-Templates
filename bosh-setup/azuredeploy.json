@@ -78,9 +78,14 @@
     },
     "armPrefix" : {
       "type" : "string",
+      "allowedValues" : [
+        "management",
+        "adminmanagement"
+      ],
       "metadata": {
         "description": "Prefix for the arm endpoint."
-      }
+      },
+      "defaultValue": "management"
     }
   },
   "variables": {
@@ -113,7 +118,7 @@
     "imageOffer": "UbuntuServer",
     "ubuntuOSVersion": "14.04.3-LTS",
     "sshKeyPath": "[concat('/home/',parameters('adminUsername'),'/.ssh/authorized_keys')]",
-    "assetLoc" : "https://raw.githubusercontent.com/asnarayan/AzureStack-QuickStart-Templates/master/bosh-setup/",
+    "assetLoc" : "https://raw.githubusercontent.com/asnarayan/AzureStack-QuickStart-Templates/cf/bosh-setup/",
     "baseUriAzureCloud": "https://raw.githubusercontent.com/bingosummer/azure-quickstart-templates/AzureStackTP2/bosh-setup/",
     "baseUriAzureChinaCloud": "https://cloudfoundry.blob.core.chinacloudapi.cn/",
 
