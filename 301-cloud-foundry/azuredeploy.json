@@ -69,7 +69,7 @@
     "azureStackDNSRecursor":{
       "type":"string",
       "metadata": {
-        "description": "IP of the Azurestack DNS Recursor. Use Azure Powershell Command : ((ipconfig /all | Select-String "DNS Servers")[0].ToString().Split(':')[1])"
+        "description": "IP of the Azurestack DNS Recursor. Use Azure Powershell Command : ((ipconfig /all | Select-String 'DNS Servers')[0].ToString().Split(':')[1])"
       }
     },
     "cloudFoundryDeployType" : {
