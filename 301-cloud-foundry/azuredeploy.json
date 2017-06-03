@@ -97,7 +97,7 @@
     "vhdImageSku" : {
       "type" : "string",
       "allowedValues" : [
-        "14.04.3-LTS"
+        "14.04-LTS"
       ],
       "metadata": {
         "description": "OS Version SKU "
