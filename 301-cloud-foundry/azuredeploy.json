@@ -102,7 +102,7 @@
       "metadata": {
         "description": "OS Version SKU "
       },
-      "defaultValue": "14.04.3-LTS"
+      "defaultValue": "14.04-LTS"
     },
     "vhdImageVersion" : {
       "type" : "string",
