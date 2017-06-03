@@ -28,8 +28,9 @@
         "AzureStack"
       ],
       "metadata": {
-        "description": "Different environments in Azure. Choose AzureCloud for Global Azure, and choose AzureChinaCloud for Mooncake (Azure China Cloud)."
-      }
+        "description": "Target Environment for Cloud Foundry Deployment"
+      },
+      "defaultValue": "AzureStack"
     },
     "tenantID": {
       "type": "string",
@@ -60,10 +61,16 @@
       }
     },
     "serviceHostBase": {
-      "type": "string"
+      "type": "string",
+      "metadata": {
+        "description": "The AzureStack external domain name i.e. local.azurestack.external"
+      }
     },
     "azureStackDNSRecursor":{
-      "type":"string"
+      "type":"string",
+      "metadata": {
+        "description": "IP of the Azurestack DNS Recursor. Use Azure Powershell Command : ((ipconfig /all | Select-String "DNS Servers")[0].ToString().Split(':')[1])"
+      }
     },
     "cloudFoundryDeployType" : {
       "type" : "string",
@@ -86,6 +93,26 @@
         "description": "Prefix for the arm endpoint."
       },
       "defaultValue": "management"
+    },
+    "vhdImageSku" : {
+      "type" : "string",
+      "allowedValues" : [
+        "14.04.3-LTS"
+      ],
+      "metadata": {
+        "description": "OS Version SKU "
+      },
+      "defaultValue": "14.04.3-LTS"
+    },
+    "vhdImageVersion" : {
+      "type" : "string",
+      "allowedValues" : [
+        "1.0.20161208"
+      ],
+      "metadata": {
+        "description": "Version of VHD"
+      },
+      "defaultValue": "1.0.20161208"
     }
   },
   "variables": {
@@ -116,7 +143,8 @@
     "devboxPrivateIPAddress": "10.0.0.100",
     "imagePublisher": "Canonical",
     "imageOffer": "UbuntuServer",
-    "ubuntuOSVersion": "14.04.3-LTS",
+    "imageSku": "[parameters('vhdImageSku')]",
+    "imageVersion" : "[parameters('vhdImageVersion')]",
     "sshKeyPath": "[concat('/home/',parameters('adminUsername'),'/.ssh/authorized_keys')]",
     "assetLoc" : "https://raw.githubusercontent.com/asnarayan/AzureStack-QuickStart-Templates/cf/301-cloud-foundry/",
     "baseUriAzureCloud": "https://raw.githubusercontent.com/bingosummer/azure-quickstart-templates/AzureStackTP2/bosh-setup/",
@@ -510,8 +538,8 @@
           "imageReference": {
             "publisher": "[variables('imagePublisher')]",
             "offer": "[variables('imageOffer')]",
-            "sku": "[variables('ubuntuOSVersion')]",
-            "version": "latest"
+            "sku": "[variables('imageSku')]",
+            "version":  "[variables('imageVersion')]"
           },
           "osDisk": {
             "name": "osdisk",
