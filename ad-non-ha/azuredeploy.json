@@ -21,7 +21,7 @@
             "metadata": {
                 "description": "The password for the Administrator account of the new VMs and Domain"
             },
-            "defaultValue": "[concat('Subscription#',subscription().subscriptionId)]"
+            "defaultValue": "[concat('Pw0',substring(subscription().subscriptionId,0,7))]"
         }
     },
     "variables": {
